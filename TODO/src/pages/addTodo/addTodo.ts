@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-addTodo',
@@ -7,8 +7,23 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AddTodoPage {
 
+  name;
+  notes;
+
   constructor(public navCtrl: NavController) {
-    
+
   }
+
+   saveTodo(){
+
+    let newTodo = {
+
+      name: this.name,
+      notes: this.notes
+
+    };
+
+  }
+
 
 }
