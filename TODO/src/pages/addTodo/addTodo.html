@@ -13,16 +13,16 @@
 
 <ion-item>
   <ion-label floating>Name</ion-label>
-  <ion-input type="text" [(ngModel)]="name"></ion-input>
+  <ion-input type="text" [(ngModel)]="todo.name" ></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label floating>Notes</ion-label>
-  <ion-textarea rows="4" type="text" [(ngModel)]="notes"></ion-textarea>
+  <ion-textarea rows="4" type="text" [(ngModel)]="todo.notes"></ion-textarea>
 </ion-item>
 
 </ion-list>
 
- <button full ion-button color="secondary" (click)="saveTodo()">Save</button> 
+ <button ion-button type="submit" (click)="saveTodo()" >Save</button>
 
 </ion-content>

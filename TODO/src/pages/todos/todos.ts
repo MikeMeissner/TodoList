@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AddTodoPage } from '../addTodo/addTodo';
+
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'page-todos',
@@ -7,17 +10,26 @@ import { NavController } from 'ionic-angular';
 })
 export class TodosPage {
 
- public todos;
+ public todos:FirebaseListObservable<any>;
+  
+  constructor(public navCtrl: NavController, fire: AngularFire) {
+    this.todos = fire.database.list('/todos');
 
-  constructor(public navCtrl: NavController) {
-    this.todos = [
-      {name: 'Wash Car', notes: 'Make it shiny', checked: false},
-      {name: 'Go Outside', notes: 'Look at sun', checked: false},
-      {name: 'Walk', notes: 'Move with legs', checked: false},
-      {name: 'Class', notes: 'Drive to class', checked: false}
-    ];
+
   }
 
+
+  editTodo(todo){
+    this.navCtrl.push(AddTodoPage,{todo:todo}); 
+  }
+
+  deleteTodo(todo){
+    this.todos.remove(todo); 
+  }
+
+  checkedTodo(todo){
+    this.todos.update(todo.$key,{checked:todo.checked}); 
+  }
 
 
 }
