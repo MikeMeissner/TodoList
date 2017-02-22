@@ -15,21 +15,14 @@ export class TodosPage {
   constructor(public navCtrl: NavController, fire: AngularFire) {
     this.todos = fire.database.list('/todos');
 
-
   }
-
 
   editTodo(todo){
     this.navCtrl.push(AddTodoPage,{todo:todo}); 
   }
 
-  deleteTodo(todo){
-    this.todos.remove(todo); 
-  }
-
   checkedTodo(todo){
     this.todos.update(todo.$key,{checked:todo.checked}); 
   }
-
 
 }

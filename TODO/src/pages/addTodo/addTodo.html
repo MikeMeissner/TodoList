@@ -1,12 +1,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title *ngIf="!edit"> Add Todo</ion-title>
-    <ion-title *ngIf="edit"> Edit Todo</ion-title>
+    <ion-title *ngIf="!edit"> Add To Do</ion-title>
+    <ion-title *ngIf="edit"> Edit To Do</ion-title>
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content padding>
 
@@ -24,8 +23,8 @@
 
 </ion-list>
 
- <button ion-button type="submit" (click)="saveTodo()" >Save</button>
+ <button ion-button navPop type="submit" (click)="saveTodo()" (click)="savedAlert()" color="secondary">Save</button>
+ <button ion-button navPop *ngIf="edit" color="danger" (click)="deleteTodo(todo)">Delete</button>
  <button ion-button navPop *ngIf="edit">Back</button>
-
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { TodosPage } from '../todos/todos';
 
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
@@ -14,7 +14,7 @@ public todo:any;
 edit:boolean=false;
 todos:FirebaseListObservable<any>; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, fire: AngularFire) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, fire: AngularFire) {
 
   if (navParams.get("todo")==undefined) {
         this.todo = {};
@@ -23,7 +23,6 @@ todos:FirebaseListObservable<any>;
     {
       this.edit=true;
       this.todo=navParams.get("todo");
-      console.log(this.todo.$key)
     }
     this.todos = fire.database.list('/todos');
   }
@@ -34,22 +33,21 @@ todos:FirebaseListObservable<any>;
     }else{
       this.todo.checked=false;
       this.todos.push(this.todo);
-    }
-      this.navCtrl.push(TodosPage);
-  }
-
-   onPageDidEnter()
-    {
-
-        
-
-    }
-
-    onPageWillLeave()
-    {
-
-        
-
+      this.todo = {};
     }
   }
 
+  deleteTodo(todo){
+    this.todos.remove(todo); 
+  }
+
+  savedAlert(){
+    let alert = this.alertCtrl.create({
+        title: 'Saved!',
+        subTitle: 'Your To Do has been successfully saved',
+        buttons: ['OK']
+      });
+      alert.present();
+  }
+      
+}
