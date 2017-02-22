@@ -1,3 +1,10 @@
+/*
+* File Name: app.module.ts
+* Student Name: Michael Meissner
+* Student Number: 200289381 
+* App Description: A simple todo list app
+*/
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';

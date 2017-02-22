@@ -1,3 +1,10 @@
+/*
+* File Name: tabs.ts
+* Student Name: Michael Meissner
+* Student Number: 200289381 
+* App Description: A simple todo list app
+*/
+
 import { Component } from '@angular/core';
 
 import { TodosPage } from '../todos/todos';
