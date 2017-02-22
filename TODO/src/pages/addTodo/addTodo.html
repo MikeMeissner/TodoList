@@ -1,7 +1,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Add Todo</ion-title>
+    <ion-title *ngIf="!edit"> Add Todo</ion-title>
+    <ion-title *ngIf="edit"> Edit Todo</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -24,5 +25,7 @@
 </ion-list>
 
  <button ion-button type="submit" (click)="saveTodo()" >Save</button>
+ <button ion-button navPop *ngIf="edit">Back</button>
+
 
 </ion-content>

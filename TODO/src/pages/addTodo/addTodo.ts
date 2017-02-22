@@ -37,5 +37,19 @@ todos:FirebaseListObservable<any>;
     }
       this.navCtrl.push(TodosPage);
   }
+
+   onPageDidEnter()
+    {
+
+        
+
+    }
+
+    onPageWillLeave()
+    {
+
+        
+
+    }
   }
 
